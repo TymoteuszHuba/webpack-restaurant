@@ -7,12 +7,13 @@ import slice_pizza from './slice_pizza.jpg';
 const getYear = new Date().getFullYear();
 console.log(getYear);
 
-// universal function responsible for add elements to website 
+// universal function responsible for add elements to website
 const createElementWithClass = (
 	parentType,
 	elementName,
 	count,
-	childConfigs
+	childConfigs,
+	setId = false
 ) => {
 	const parentElement = document.createElement(parentType);
 	parentElement.classList.add(elementName);
@@ -22,6 +23,10 @@ const createElementWithClass = (
 		const childElement = document.createElement(childConfig.type);
 		childElement.classList.add(childConfig.className);
 		parentElement.appendChild(childElement);
+
+		if (setId && childConfig.id) {
+			childElement.setAttribute('id', childConfig.id);
+		}
 
 		if (childConfig.innerChildren) {
 			childConfig.innerChildren.forEach((innerChild) => {
@@ -48,11 +53,22 @@ const createElementWithClass = (
 };
 
 // create new elements of website and invoke the function createElementWithCalss
-const navbar = createElementWithClass('nav', 'nav', 3, [
-	{type: 'a', className: 'nav-link', textContent: 'Home'},
-	{type: 'a', className: 'nav-link', textContent: 'Menu'},
-	{type: 'a', className: 'nav-link', textContent: 'Contact'},
-]);
+const navbar = createElementWithClass(
+	'nav',
+	'nav',
+	3,
+	[
+		{type: 'a', className: 'nav-link', textContent: 'Home', id: 'link-home'},
+		{type: 'a', className: 'nav-link', textContent: 'Menu', id: 'link-menu'},
+		{
+			type: 'a',
+			className: 'nav-link',
+			textContent: 'Contact',
+			id: 'link-contact',
+		},
+	],
+	true
+);
 
 const header = createElementWithClass('header', 'header');
 
