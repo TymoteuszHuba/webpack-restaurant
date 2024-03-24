@@ -5,7 +5,7 @@ import slice_pizza from './slice_pizza.jpg';
 
 // get the year for footer
 const getYear = new Date().getFullYear();
-console.log(getYear);
+// console.log(getYear);
 
 // universal function responsible for add elements to website
 const createElementWithClass = (
