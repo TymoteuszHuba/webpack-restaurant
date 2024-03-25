@@ -147,15 +147,31 @@ const homeInit = () => {
 	main.append(sectionTitle, sectionAbout);
 };
 
+// main for menu
+const menuInit = () => {
+	const sectionMenu = createElementWithClass('section', 'menu');
+	main.appendChild(sectionMenu);
+};
+
+// main for contact
+const contactInit = () => {};
+
 // main function which control elements for webiste
 const website = () => {
 	structureInit();
 	homeInit();
+
 	const navLinks = document.querySelectorAll('.nav-link');
 	navLinks.forEach((navLink) => {
 		navLink.addEventListener('click', (event) => {
+			main.innerHTML = '';
 			console.log(event.target.id);
 			if (event.target.id === 'link-home') {
+				homeInit();
+			} else if (event.target.id === 'link-menu') {
+				menuInit();
+			} else {
+				contactInit();
 			}
 		});
 	});
