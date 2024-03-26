@@ -2,6 +2,10 @@ import './style.css';
 import logo from './logo.jpg';
 import hands from './hands.jpeg';
 import slice_pizza from './slice_pizza.jpg';
+import green_pizza from './green_pizza.jpg';
+import paprica_pizza from './paprica_pizza.jpg';
+import pinapple_pizza from './pinapple_pizza.jpg';
+import corn_pizza from './corn_pizza.jpg';
 
 // main available for each function
 let main;
@@ -149,8 +153,129 @@ const homeInit = () => {
 
 // main for menu
 const menuInit = () => {
-	const sectionMenu = createElementWithClass('section', 'menu');
+	const sectionMenu = createElementWithClass('section', 'section-menu', 2, [
+		{
+			type: 'div',
+			className: 'section-text-box',
+			innerChildren: [
+				{
+					type: 'h1',
+					className: 'section-title',
+					textContent: 'Casa Menu',
+				},
+				{
+					type: 'p',
+					className: 'section-description',
+					textContent:
+						'Each pizza has a thin Italian dough that is kneaded by hand.',
+				},
+			],
+		},
+		{
+			type: 'div',
+			className: 'card-container',
+		},
+	]);
+
+	const pepperoniCard = createElementWithClass('div', 'card', 2, [
+		{
+			type: 'div',
+			className: 'card-text',
+			innerChildren: [
+				{
+					type: 'h2',
+					className: 'card-title',
+					textContent: 'Pepperoni Napoletana',
+				},
+				{
+					type: 'p',
+					className: 'card-description',
+					textContent:
+						'Italian ingredients: pepperoni, cheese, tomato, champignons',
+				},
+			],
+		},
+		{
+			type: 'div',
+			className: 'card-img',
+			imgSrc: paprica_pizza,
+		},
+	]);
+	const spinachCard = createElementWithClass('div', 'card', 2, [
+		{
+			type: 'div',
+			className: 'card-text',
+			innerChildren: [
+				{
+					type: 'h2',
+					className: 'card-title',
+					textContent: 'Green Spinach Napoletana',
+				},
+				{
+					type: 'p',
+					className: 'card-description',
+					textContent:
+						'Italian ingredients: spinach, mozzarella, tomato, champignons',
+				},
+			],
+		},
+		{
+			type: 'div',
+			className: 'card-img',
+			imgSrc: green_pizza,
+		},
+	]);
+	const pinappleCard = createElementWithClass('div', 'card', 2, [
+		{
+			type: 'div',
+			className: 'card-text',
+			innerChildren: [
+				{
+					type: 'h2',
+					className: 'card-title',
+					textContent: 'Pinapple Napoletana',
+				},
+				{
+					type: 'p',
+					className: 'card-description',
+					textContent:
+						'Italian ingredients: pinapple, cheese, onion, champignons',
+				},
+			],
+		},
+		{
+			type: 'div',
+			className: 'card-img',
+			imgSrc: pinapple_pizza,
+		},
+	]);
+	const cornCard = createElementWithClass('div', 'card', 2, [
+		{
+			type: 'div',
+			className: 'card-text',
+			innerChildren: [
+				{
+					type: 'h2',
+					className: 'card-title',
+					textContent: 'Corn Napoletana',
+				},
+				{
+					type: 'p',
+					className: 'card-description',
+					textContent: 'Italian ingredients: corn, cheese, onion, champignons',
+				},
+			],
+		},
+		{
+			type: 'div',
+			className: 'card-img',
+			imgSrc: corn_pizza,
+		},
+	]);
+
 	main.appendChild(sectionMenu);
+	const cardContainer = document.querySelector('.card-container');
+	cardContainer.append(pepperoniCard, spinachCard, pinappleCard, cornCard);
 };
 
 // main for contact
