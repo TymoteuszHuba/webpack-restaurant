@@ -279,7 +279,68 @@ const menuInit = () => {
 };
 
 // main for contact
-const contactInit = () => {};
+const contactInit = () => {
+	const sectionContact = createElementWithClass(
+		'section',
+		'section-contact',
+		2,
+		[
+			{
+				type: 'div',
+				className: 'section-text-box',
+				innerChildren: [
+					{
+						type: 'h1',
+						className: 'section-title',
+						textContent: 'Contact with Casa della Napoletana',
+					},
+					{
+						type: 'p',
+						className: 'contact-text',
+						textContent: '80138 Napoli, St. Paollo 21',
+					},
+					{
+						type: 'p',
+						className: 'contact-text',
+						textContent: 'Phone number: +39 22 331 111',
+					},
+					{
+						type: 'p',
+						className: 'contact-text',
+						textContent:
+							'Everyday from 9.00 - 12.00 and 15.00 - 23.00 (between 12.00 and 15.00 siesta break)',
+					},
+				],
+			},
+			{
+				type: 'div',
+				className: 'section-map',
+				innerChildren: [
+					{
+						type: 'h2',
+						className: 'map-title',
+						textContent: 'Where you can find us',
+					},
+					{
+						type: 'div',
+						className: 'map',
+					},
+				],
+			},
+		]
+	);
+
+	const contactForm = createElementWithClass('form', 'contact-form', 3);
+
+	main.append(sectionContact);
+
+	const map = document.querySelector('.map');
+	const locationMap = document.createElement('iframe');
+	locationMap.src =
+		'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13676.890330221015!2d14.243074448276568!3d40.84644097681834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b0841b225c40b%3A0x4b3ac4ad2c065bec!2sPiazzetta%20Divino%20Amore%2C%2080138%20Napoli%20NA%2C%20W%C5%82ochy!5e0!3m2!1spl!2spl!4v1711629472799!5m2!1spl!2spl';
+
+	map.appendChild(locationMap);
+};
 
 // main function which control elements for webiste
 const website = () => {
