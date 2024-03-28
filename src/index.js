@@ -330,16 +330,129 @@ const contactInit = () => {
 		]
 	);
 
-	const contactForm = createElementWithClass('form', 'contact-form', 3);
+	const contactForm = createElementWithClass(
+		'form',
+		'contact-form',
+		6,
+		[
+			{
+				type: 'h2',
+				className: 'form-title',
+				textContent: 'Get in touch',
+			},
+			{
+				type: 'div',
+				className: 'form-group',
+				innerChildren: [
+					{
+						type: 'label',
+						className: 'form-label',
+						textContent: 'Your name',
+					},
+					{
+						type: 'input',
+						className: 'form-input',
+					},
+				],
+			},
+			{
+				type: 'div',
+				className: 'form-group',
+				innerChildren: [
+					{
+						type: 'label',
+						className: 'form-label',
+						textContent: 'Your Email',
+					},
+					{
+						type: 'input',
+						className: 'form-input',
+					},
+				],
+			},
+			{
+				type: 'textarea',
+				className: 'form-text',
+				id: 'subject',
+			},
+			{
+				type: 'div',
+				className: 'form-group',
+				innerChildren: [
+					{
+						type: 'p',
+						className: 'form-radio-text',
+						textContent: 'Do you want to make reservation?',
+					},
+					{
+						type: 'input',
+						className: 'form-radio',
+					},
+					{
+						type: 'label',
+						className: 'form-radio-label',
+						textContent: 'Yes',
+					},
+					{
+						type: 'input',
+						className: 'form-radio',
+					},
+					{
+						type: 'label',
+						className: 'form-radio-label',
+						textContent: 'No',
+					},
+				],
+			},
+			{
+				type: 'button',
+				className: 'submit',
+				textContent: 'Send',
+			},
+		],
+		true
+	);
 
-	main.append(sectionContact);
+	main.append(sectionContact, contactForm);
+	createMap();
+	formSettings();
+};
 
+// function whcich add a map from google to the website
+const createMap = () => {
 	const map = document.querySelector('.map');
 	const locationMap = document.createElement('iframe');
 	locationMap.src =
 		'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13676.890330221015!2d14.243074448276568!3d40.84644097681834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b0841b225c40b%3A0x4b3ac4ad2c065bec!2sPiazzetta%20Divino%20Amore%2C%2080138%20Napoli%20NA%2C%20W%C5%82ochy!5e0!3m2!1spl!2spl!4v1711629472799!5m2!1spl!2spl';
 
 	map.appendChild(locationMap);
+};
+
+// function which set a form values, fors, ids etc.
+const formSettings = () => {
+	const inputIds = ['name', 'email'];
+	// const radioIds = ['yes']
+	const input = document.querySelectorAll('.form-input');
+	const label = document.querySelectorAll('.form-label');
+	const radioInput = document.querySelectorAll('.form-radio');
+	const radioLabel = document.querySelectorAll('.form-radio-label');
+
+	console.log(radioInput);
+	radioInput.forEach((radio, index) => {
+		radio.type = 'radio';
+		radio.value = `radio-${radioLabel[index].textContent.toLocaleLowerCase()}`;
+		radio.id = radio.value;
+		radio.name = 'radio-option';
+	});
+
+	radioLabel.forEach((label) => {
+		label.setAttribute('for', `radio-${label.textContent.toLowerCase()}`);
+	});
+
+	input.forEach((input, index) => {
+		input.id = inputIds[index];
+		label[index].setAttribute('for', inputIds[index]);
+	});
 };
 
 // main function which control elements for webiste
