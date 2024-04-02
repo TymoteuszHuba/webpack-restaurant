@@ -283,7 +283,7 @@ const contactInit = () => {
 	const sectionContact = createElementWithClass(
 		'section',
 		'section-contact',
-		2,
+		3,
 		[
 			{
 				type: 'div',
@@ -318,7 +318,7 @@ const contactInit = () => {
 				innerChildren: [
 					{
 						type: 'h2',
-						className: 'map-title',
+						className: 'section-title',
 						textContent: 'Where you can find us',
 					},
 					{
@@ -327,19 +327,25 @@ const contactInit = () => {
 					},
 				],
 			},
+			{
+				type: 'div',
+				className: 'section-form',
+				innerChildren: [
+					{
+						type: 'h2',
+						className: 'section-title',
+						textContent: 'Get in touch',
+					},
+				],
+			},
 		]
 	);
 
 	const contactForm = createElementWithClass(
 		'form',
-		'contact-form',
-		6,
+		'form',
+		5,
 		[
-			{
-				type: 'h2',
-				className: 'form-title',
-				textContent: 'Get in touch',
-			},
 			{
 				type: 'div',
 				className: 'form-group',
@@ -362,7 +368,7 @@ const contactInit = () => {
 					{
 						type: 'label',
 						className: 'form-label',
-						textContent: 'Your Email',
+						textContent: 'Your email',
 					},
 					{
 						type: 'input',
@@ -371,9 +377,19 @@ const contactInit = () => {
 				],
 			},
 			{
-				type: 'textarea',
-				className: 'form-text',
-				id: 'subject',
+				type: 'div',
+				className: 'form-group',
+				innerChildren: [
+					{
+						type: 'label',
+						className: 'form-label',
+						textContent: 'Subject',
+					},
+					{
+						type: 'textarea',
+						className: 'form-textarea',
+					},
+				],
 			},
 			{
 				type: 'div',
@@ -383,24 +399,6 @@ const contactInit = () => {
 						type: 'p',
 						className: 'form-radio-text',
 						textContent: 'Do you want to make reservation?',
-					},
-					{
-						type: 'input',
-						className: 'form-radio',
-					},
-					{
-						type: 'label',
-						className: 'form-radio-label',
-						textContent: 'Yes',
-					},
-					{
-						type: 'input',
-						className: 'form-radio',
-					},
-					{
-						type: 'label',
-						className: 'form-radio-label',
-						textContent: 'No',
 					},
 				],
 			},
@@ -413,7 +411,33 @@ const contactInit = () => {
 		true
 	);
 
-	main.append(sectionContact, contactForm);
+	const formGroupRadio = createElementWithClass('div', 'form-group-radio', 4, [
+		{
+			type: 'input',
+			className: 'form-radio',
+		},
+		{
+			type: 'label',
+			className: 'form-radio-label',
+			textContent: 'Yes',
+		},
+		{
+			type: 'input',
+			className: 'form-radio',
+		},
+		{
+			type: 'label',
+			className: 'form-radio-label',
+			textContent: 'No',
+		},
+	]);
+
+	main.append(sectionContact);
+	const sectionForm = document.querySelector('.section-form');
+	sectionForm.append(contactForm);
+	const formGroups = document.querySelectorAll('.form-group');
+	const lastFormGroup = formGroups[formGroups.length - 1];
+	lastFormGroup.append(formGroupRadio);
 	createMap();
 	formSettings();
 };
